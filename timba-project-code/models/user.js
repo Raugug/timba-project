@@ -7,7 +7,7 @@ const userSchema = Schema({
   username: {type: String, required: true, unique: true},
   email:    {type: String, required: true, unique: true},
   password: {type: String, required: true},
-  isHost: {type: boolean, default: false},
+  isHost: {type: Boolean, default: false},
   photo: {type: String, default:'../uploads/defaultimageuser'},
   level: {type: Number, default: 1},
   reviews: [reviewSchema.schema],
