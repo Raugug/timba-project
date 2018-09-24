@@ -1,0 +1,69 @@
+<section id="new-game">
+
+<h1>NEW GAME</h1>
+
+<form action="/game/new" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="desc-input">Description</label>
+    <input type="text" name="description" placeholder="Describe your game" class="form-control">
+  </div>
+  
+  <div class="form-group">
+    <label for="level-input">Level</label>
+    <select name="level" class="form-control">
+      <option value=1 selected>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="players-input">Number of players</label>
+    <select name="playersNum" class="form-control">
+      <option value=4 selected>4</option>
+      <option value=5>5</option>
+      <option value=3>6</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Location: </label>
+    <input id="lat-pos" type="hidden" name="latitude" placeholder="Latitude">
+    <input id="lng-pos" type="hidden" name="longitude" placeholder="Longitude">
+  </div>
+
+  <div class="form-group">
+    <label for="buyin-input">Buy-In</label>
+    <input type="text" name="" placeholder="Initial Fee" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="blinds-input">Blinds</label>
+    <input type="text" name="blinds" placeholder="small blind/big blind" class="form-control">
+  </div>
+
+  <div class="form-group">
+      <label for="photo">Picture</label>
+      <input type="file" name="photo" id="photo" class="form-control">
+    </div>
+
+
+  <input type="submit" name="" value="CREATE">
+  <div id="map"></div>
+</form>
+
+</section>
+<script src="/javascripts/addMap.js"></script>
+
+
+let hostId = req.user._id;
+    let photo = `/uploads/${req.file.filename}`;
+    let description = req.body.description;v
+    let playersNum = req.body.playersNum;v
+    let level = req.body.level;v
+    let blinds = req.body.blinds;v
+    let buyIn = req.body.buyIn;v
+    let date = req.body.date;v
+    let time = req.body.time;v

@@ -1,0 +1,28 @@
+<section id="games-list">
+
+  <h1>LIST OF GAMES</h1>
+
+
+  {{#each games}}
+  <div class="game-in-list">
+    <a href="/game/{{this._id}}"><img src="{{this.photo}}" alt="Game Image"></a>
+    <h3>Hosted by: {{this.hostId.username}}</h3>
+
+    <p>{{this.date}} | {{this.time}}</p>
+    <p>Level: {{this.level}}</p>
+    <p>Buy-In: {{this.buyIn}}</p>
+
+    <button class="btn btn-info">
+      <a href='/game/{{this._id}}'>DETAILS</a>
+    </button>
+
+  </div>
+  {{/each}}
+
+
+  
+</section>
+<script>
+  window.places = {{{ placeStr }}}
+</script>
+<script src="/javascripts/listMap.js"></script>

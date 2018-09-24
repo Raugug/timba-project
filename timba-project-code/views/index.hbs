@@ -4,32 +4,44 @@
   {{#if user}}
   <h2>{{title}}</h2>
   <h3>Welcome {{user.username}}</h3>
-  <button class="btn btn-danger">
-    <a href='/players/{{user._id}}'>MY PROFILE</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/logout'>LOG OUT</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href="/games/">GAMES</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/players/'>PLAYERS</a>
-  </button>
-  {{else}}
-  <button class="btn btn-danger">
-    <a href='/signup'>SIGN UP</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/login'>LOG IN</a>
-  </button>
-  {{/if}}
-  {{#if user.isHost}}
-  <button class="btn btn-danger">
-    <a href="/games/new">CREATE GAME</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/players/{{user._id}}'>MY GAMES</a>
-  </button>
-  {{/if}}
+  <section id="nav-bar">
+
+    <button class="btn btn-danger">
+      <a href='/players/{{user._id}}'>MY PROFILE</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href='/logout'>LOG OUT</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href="/game/list">GAMES</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href='/players/'>PLAYERS</a>
+    </button>
+    <form action="/" method="post">
+      <input class="btn btn-warning" type="submit" name="" value="BECOME A HOST">
+    </form>
+    {{else}}
+    <button class="btn btn-danger">
+      <a href='/signup'>SIGN UP</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href='/login'>LOG IN</a>
+    </button>
+    {{/if}}
+    {{#if user.isHost}}
+    <button class="btn btn-danger">
+      <a href="/games/new">CREATE GAME</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href='/players/{{user._id}}'>MY GAMES</a>
+    </button>
+    {{/if}}
+  </section>
+
+  <div id="map"></div>
 </section>
+<script>
+  window.games = {{{ gameStr }}}
+</script>
+<script src="/javascripts/listMap.js"></script>
