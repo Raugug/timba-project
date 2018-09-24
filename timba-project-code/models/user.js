@@ -12,10 +12,14 @@ const userSchema = Schema(
     photo: { type: String, default: "../uploads/defaultimageuser" },
     level: { type: Number, default: 1 },
     reviews: [reviewSchema.schema],
-    stats: {type: [], default: [1, 1, 1, 1] },
+    vision: { type: Number, default: 1 },
+    selfControl: { type: Number, default: 1 },
+    courage: { type: Number, default: 1 },
+    sharp: { type: Number, default: 1 },
+    //stats: {type: [], default: [1, 1, 1, 1] },
     requests: [requestSchema.schema],
     totalGames: Number,
-    validGames: Number,
+    validGames: Number
     //  location: { type: { type: String }, coordinates: [Number] }
   },
   {

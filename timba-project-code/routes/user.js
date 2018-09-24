@@ -11,7 +11,10 @@ const upload = multer({ dest: './public/uploads/' });
 
 // Get Profile User
 router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
-  res.render('user/profile');
+  User.findById(req.params.userId)
+  .then(player => {
+    res.render('user/profile', {player});
+  }).catch(e => next(e))
 });
 
 // Get Players List
