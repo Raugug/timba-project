@@ -5,9 +5,17 @@ const cookieParser = require("cookie-parser");
 const express = require("express");
 const favicon = require("serve-favicon");
 const hbs = require("hbs");
-const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const passport = require('passport');
+const User = require('./models/user');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const multer = require('multer');
+const upload = multer({ dest: '../public/uploads/' });
 
 mongoose
   .connect(
@@ -51,10 +59,44 @@ app.set("view engine", "hbs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
+//SESSION MIDDLEWARE
+app.use(session({
+  secret: "basic-auth-secret",
+  cookie: { maxAge: 60000 },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
+  }),
+  resave: true,
+  saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+  if (req.session.currentUser) {
+    res.locals.currentUserInfo = req.session.currentUser;
+    res.locals.isUserLoggedIn = true;
+  } else {
+    res.locals.isUserLoggedIn = false;
+  }
+
+  next();
+});
+
+require('./passport')(app);
+
+app.use(flash());
+
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.use((req, res, next) => {
+  app.locals.title = "TimbApp - Your app to find poker partners";
+  app.locals.user = req.user;
+  next();
+})
+//app.locals.title = "TimbApp - Your app to find poker partners";
 
 const index = require("./routes/index");
+const authRoutes = require("./routes/auth");
 app.use("/", index);
+app.use("/", authRoutes);
 
 module.exports = app;

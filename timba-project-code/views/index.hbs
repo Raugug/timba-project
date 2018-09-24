@@ -1,2 +1,35 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<section class="main-menu">
+
+  <h2>INDEX VIEW</h2>
+  {{#if user}}
+  <h2>{{title}}</h2>
+  <h3>Welcome {{user.username}}</h3>
+  <button class="btn btn-danger">
+    <a href='/players/{{user._id}}'>MY PROFILE</a>
+  </button>
+  <button class="btn btn-danger">
+    <a href='/logout'>LOG OUT</a>
+  </button>
+  <button class="btn btn-danger">
+    <a href="/games/">GAMES</a>
+  </button>
+  <button class="btn btn-danger">
+    <a href='/players/'>PLAYERS</a>
+  </button>
+  {{else}}
+  <button class="btn btn-danger">
+    <a href='/signup'>SIGN UP</a>
+  </button>
+  <button class="btn btn-danger">
+    <a href='/login'>LOG IN</a>
+  </button>
+  {{/if}}
+  {{#if user.isHost}}
+  <button class="btn btn-danger">
+    <a href="/games/new">CREATE GAME</a>
+  </button>
+  <button class="btn btn-danger">
+    <a href='/players/{{user._id}}'>MY GAMES</a>
+  </button>
+  {{/if}}
+</section>

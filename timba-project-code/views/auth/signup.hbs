@@ -1,0 +1,41 @@
+<section id="signup-view">
+
+  <h2> Sign Up </h2>
+
+  {{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+
+  <form action="/signup" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name-input"> Name </label>
+      <input type="text" name="nameInput" id="name-input" placeholder="e.g., Da Fuckn' Poker master" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="email-input"> Email </label>
+      <input type="email" name="emailInput" id="email-input" placeholder="e.g., masterpoker@iwillruinyou.com" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="password-input"> Password </label>
+      <input type="password" name="passwordInput" id="password-input" placeholder="e.g., ••••••••••••" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="photo-input">Profile Picture</label>
+      <input type="file" name="photoInput" id="password-input" class="form-control">
+    </div>
+
+    <button> Create New Account </button>
+  </form>
+
+  <p>
+    Already have an account?
+    <a href="/login">
+      Log in.
+    </a>
+  </p>
+</section>
