@@ -1,0 +1,15 @@
+<section>
+  <h2>User Profile</h2>
+  {{#if errorMessage}}
+  <p class="error-message">
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+  <button class="btn btn-primary">
+    <a href='/player/list/{{user._id}}'>View Players List</a>
+  </button>
+  <div>
+    <h1>En este campo va el profile</h1>
+  </div>
+  <button> Log Out </button>
+</section>

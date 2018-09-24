@@ -4,8 +4,11 @@
   {{#if user}}
   <h2>{{title}}</h2>
   <h3>Welcome {{user.username}}</h3>
-  <button class="btn btn-danger">
+  {{!-- <button class="btn btn-danger">
     <a href='/players/{{user._id}}'>MY PROFILE</a>
+  </button> --}}
+  <button class="btn btn-secondary">
+    <a href='/player/{{user._id}}'>User PROFILE</a>
   </button>
   <button class="btn btn-danger">
     <a href='/logout'>LOG OUT</a>

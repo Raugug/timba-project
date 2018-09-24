@@ -96,7 +96,9 @@ app.use((req, res, next) => {
 
 const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
+const userRoutes = require('./routes/user'); // ruta fisica
 app.use("/", index);
 app.use("/", authRoutes);
+app.use('/player', userRoutes); // prefijo ruta navegador
 
 module.exports = app;

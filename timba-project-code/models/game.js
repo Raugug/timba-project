@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const userSchema = require('./user');
-<<<<<<< HEAD
-const requestSchema = require('./request')
-=======
 const requestSchema = require('./request');
->>>>>>> efaca795a4b0916e50edbcc3270dfa7a11afd5c5
 
 const gameSchema = Schema({
   hostId: { type: Schema.Types.ObjectId, ref: "User" },
