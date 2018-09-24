@@ -14,6 +14,8 @@ const gameSchema = Schema({
   status: { type: String, enum: ['Joining', 'Players confirmed', 'Finished', 'Cancelled'], default: 'Joining' },
   date: Date,
   time: String,
+  description: String,
+  buyIn: String,
   location: { type: { type: String }, coordinates: [Number] }
 },
 {
