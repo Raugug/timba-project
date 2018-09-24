@@ -10,7 +10,7 @@ const userSchema = Schema({
   photo: {type: String, default:'../uploads/defaultimageuser'},
   level: {type: Number, default: 1},
   reviews: [reviewSchema],
-  stats: [Number],
+  stats: [Number], // [v1, v2, v3, v4]
   requests: [requestSchema],
   totalGames: Number,
   validGames: Number,
