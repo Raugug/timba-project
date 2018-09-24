@@ -1,9 +1,10 @@
 require('dotenv').config();
 const mongoose =require('mongoose');
 const User = require('../models/user');
+const Game = require('../models/game');
 
 
-const userTest = [
+const gameTest = [
 {
   username: 'pepe1',
   email: 'pepe@gmail.com',
@@ -77,13 +78,13 @@ const userTest = [
 ];
 
 mongoose.connect(process.env.DBURL);
-User.collection.drop();
+//User.collection.drop();
 
 // .then(() => console.log('DB clera'));
 
-User.create(userTest, (err) => {
+Game.create(gameTest, (err) => {
   if(err) {throw (err)}
-  console.log(`Created ${userTest.length} users`)
+  console.log(`Created ${gameTest.length} users`)
   mongoose.disconnect()
 
 });
