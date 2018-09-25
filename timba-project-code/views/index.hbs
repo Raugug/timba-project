@@ -4,11 +4,10 @@
   {{#if user}}
   <h2>{{title}}</h2>
   <h3>Welcome {{user.username}}</h3>
-<<<<<<< HEAD
   <section id="nav-bar">
 
     <button class="btn btn-danger">
-      <a href='/players/{{user._id}}'>MY PROFILE</a>
+      <a href='/player/{{user._id}}'>MY PROFILE</a>
     </button>
     <button class="btn btn-danger">
       <a href='/logout'>LOG OUT</a>
@@ -17,14 +16,14 @@
       <a href="/game/list">GAMES</a>
     </button>
     <button class="btn btn-danger">
-      <a href='/players/'>PLAYERS</a>
+      <a href='/player/list'>PLAYERS</a>
     </button>
     {{#if user.isHost}}
     <button class="btn btn-danger">
       <a href="/game/new">CREATE GAME</a>
     </button>
     <button class="btn btn-danger">
-      <a href='/players/{{user._id}}'>MY GAMES</a>
+      <a href='/player/{{user._id}}'>MY GAMES</a>
     </button>
     {{else}}
     <form action="/" method="post">
@@ -47,37 +46,3 @@
   window.games = {{{ gameStr }}}
 </script>
 <script src="/javascripts/listMap.js"></script>
-=======
-  {{!-- <button class="btn btn-danger">
-    <a href='/players/{{user._id}}'>MY PROFILE</a>
-  </button> --}}
-  <button class="btn btn-secondary">
-    <a href='/player/{{user._id}}'>User PROFILE</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/logout'>LOG OUT</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href="/games/">GAMES</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/players/'>PLAYERS</a>
-  </button>
-  {{else}}
-  <button class="btn btn-danger">
-    <a href='/signup'>SIGN UP</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/login'>LOG IN</a>
-  </button>
-  {{/if}}
-  {{#if user.isHost}}
-  <button class="btn btn-danger">
-    <a href="/games/new">CREATE GAME</a>
-  </button>
-  <button class="btn btn-danger">
-    <a href='/players/{{user._id}}'>MY GAMES</a>
-  </button>
-  {{/if}}
-</section>
->>>>>>> 5a5981784c2b7f103021863c9ab11b75e9237ba6
