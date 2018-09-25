@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
     console.log(user)
     res.render('index', {
       games,
+      user,
       gameStr: JSON.stringify(games),
       user: JSON.stringify(user)
     });
