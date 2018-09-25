@@ -7,7 +7,6 @@ const gameSchema = Schema({
   hostId: { type: Schema.Types.ObjectId, ref: "User" },
   playersNum:  Number,
   blinds: String,
-  ante: Number,
   photo: {type: String, default:'../uploads/defaultimagegame'},
   level: {type: Number, default: 1},
   players: [userSchema.schema],

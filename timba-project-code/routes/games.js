@@ -32,10 +32,8 @@ router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next)
       type: 'Point',
       coordinates: [Number(req.body.latitude), Number(req.body.longitude)]
     }
-    let players = [req.user];
-    players[0].location = location;
-
-  Game.create({hostId, playersNum, photo, description, photo, level, players, blinds, buyIn, date, time, location})
+  
+  Game.create({hostId, playersNum, photo, description, photo, level, blinds, buyIn, date, time, location})
   .then(game => {
     console.log("GAME CREATED", game);
     res.redirect('/game/list');
