@@ -1,0 +1,19 @@
+<section class="main-menu">
+  <h3>Total List {{user.username}}</h3>
+
+  <div>
+<ul>
+{{#each players}}
+<li>{{this.username}}
+   <a href="/player/compere/{{this._id}}">Compare</a>
+    <a href="/player/invite/{{this._id}}">Invite</a>
+</li>
+{{/each}}
+</ul>
+
+  </div>
+
+
+
+
+</section>
