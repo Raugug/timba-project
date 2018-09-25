@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
+    zoom: 15,
   });
 
   geolocalize().then(center => {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
           lng:game.location.coordinates[1]
         },
         map: map,
-        title: game.hostId+'\n'+ game.level,
+        title: game.hostId+'\n'+ game.level+'\n'+ game.date+' |'+ game.time,
       });
 
       if (user.level > game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png');}

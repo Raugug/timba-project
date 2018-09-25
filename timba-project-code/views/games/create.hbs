@@ -7,6 +7,15 @@
     <label for="desc-input">Description</label>
     <input type="text" name="description" placeholder="Describe your game" class="form-control">
   </div>
+
+  <div class="form-group">
+    <label for="date-input">Date</label>
+    <input type="date" name="date" placeholder="DD-MM-YYYY" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="timee-input">Time</label>
+    <input type="time" name="time" placeholder="" class="form-control">
+  </div>
   
   <div class="form-group">
     <label for="level-input">Level</label>
@@ -56,14 +65,3 @@
 
 </section>
 <script src="/javascripts/addMap.js"></script>
-
-
-let hostId = req.user._id;
-    let photo = `/uploads/${req.file.filename}`;
-    let description = req.body.description;v
-    let playersNum = req.body.playersNum;v
-    let level = req.body.level;v
-    let blinds = req.body.blinds;v
-    let buyIn = req.body.buyIn;v
-    let date = req.body.date;v
-    let time = req.body.time;v

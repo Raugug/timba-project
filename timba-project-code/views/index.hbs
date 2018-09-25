@@ -18,23 +18,24 @@
     <button class="btn btn-danger">
       <a href='/players/'>PLAYERS</a>
     </button>
+    {{#if user.isHost}}
+    <button class="btn btn-danger">
+      <a href="/game/new">CREATE GAME</a>
+    </button>
+    <button class="btn btn-danger">
+      <a href='/players/{{user._id}}'>MY GAMES</a>
+    </button>
+    {{else}}
     <form action="/" method="post">
       <input class="btn btn-warning" type="submit" name="" value="BECOME A HOST">
     </form>
+    {{/if}}
     {{else}}
     <button class="btn btn-danger">
       <a href='/signup'>SIGN UP</a>
     </button>
     <button class="btn btn-danger">
       <a href='/login'>LOG IN</a>
-    </button>
-    {{/if}}
-    {{#if user.isHost}}
-    <button class="btn btn-danger">
-      <a href="/games/new">CREATE GAME</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/players/{{user._id}}'>MY GAMES</a>
     </button>
     {{/if}}
   </section>

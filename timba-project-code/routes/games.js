@@ -12,12 +12,13 @@ const upload = multer({ dest: './public/uploads/' });
 
 
 //CREATE GAME
-router.get('game/new', ensureLoggedIn(), (req, res, next) => {
+router.get('/new', ensureLoggedIn(), (req, res, next) => {
   res.render('games/create');
   });
 
-router.post('/new', [ensureLoggedIn('/login'), upload.single('photo')], (req, res, next) => {
+router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next) => {
     console.log("ENTRA GAME NEW");
+    let date ='YYYY-MM-DD'
     let hostId = req.user._id;
     let photo = `/uploads/${req.file.filename}`;
     let description = req.body.description;
@@ -25,13 +26,19 @@ router.post('/new', [ensureLoggedIn('/login'), upload.single('photo')], (req, re
     let level = req.body.level;
     let blinds = req.body.blinds;
     let buyIn = req.body.buyIn;
-    let date = req.body.date;
+    date = req.body.date;
     let time = req.body.time;
+    let location = {
+      type: 'Point',
+      coordinates: [Number(req.body.latitude), Number(req.body.longitude)]
+    }
+    let players = [req.user];
+    players[0].location = location;
 
-  Game.create({hostId, playersNum, photo, description, photo, level, blinds, buyIn, date, time})
+  Game.create({hostId, playersNum, photo, description, photo, level, players, blinds, buyIn, date, time, location})
   .then(game => {
-    console.log("CREATED GAME", game);
-    res.redirect('/games/');
+    console.log("GAME CREATED", game);
+    res.redirect('/game/list');
   }).catch(e =>  next(e))
 })
 
