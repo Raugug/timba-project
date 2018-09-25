@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Game = require('../models/game');
 const Review = require('../models/review');
+const Usergame = require('../models/usergames');
 const passport = require('passport');
 const router = express.Router();
 const bcryptSalt = 10;
@@ -35,30 +36,44 @@ router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next)
   
   Game.create({hostId, playersNum, photo, description, photo, level, blinds, buyIn, date, time, location})
   .then(game => {
-    console.log("GAME CREATED", game);
+    //console.log("GAME CREATED", game);
     res.redirect('/game/list');
   }).catch(e =>  next(e))
 })
 
 //GAMES LIST
 router.get('/list', ensureLoggedIn(), (req, res, next) => {
-  Game.find().populate('hostId').then(games => {
+  Game.find({status: 'Joining'}).populate('hostId').then(games => {
     res.render('games/list', {games});
 }).catch(e => console.log(e))
 })
 
+//ADD USER TO GAME
+router.post('/add/:gameId', ensureLoggedIn(), (req, res, next) => {
+  console.log("ENTRA EN POST")
+  let user = req.user;
+  Game.findByIdAndUpdate(req.params.gameId, {$push: {players: user}}
+     ,{'new': true} ).then(game =>{
+      Usergame.create({gameId: game.id, playerId: req.user._id}).then((usergame)=>{console.log("usergame", usergame)});
+      let stringId = encodeURIComponent(game._id);
+      res.redirect(`/game/${stringId}`);
+    })
+})
+
 //READ GAME DETAILS
 router.get('/:gameId', ensureLoggedIn(), (req, res, next) => {
-  Game.findById(req.params.gameId).populate('hostId').populate('players').then(game => {
-    //User.find().populate('authorId')
-    console.log(game)
-    return game;
-  })
+  Game.findById(req.params.gameId).populate('hostId').populate('players')
     .then(game => {
-      res.render('games/show', { game,
-        gameStr: JSON.stringify(game) })
+      Usergame.find({gameId:game._id}).find({playerId: req.user_id}).populate('gameId').then(usergame => {
+        console.log("HERE: usergame", usergame)
+      
+        res.render('games/show', { usergame, game,
+          gameStr: JSON.stringify(game) })
+        })
     }).catch(e => console.log(e))
 })
+
+
 
 //UPDATE GAME
 
