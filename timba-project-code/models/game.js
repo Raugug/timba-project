@@ -11,7 +11,7 @@ const gameSchema = Schema({
   level: {type: Number, default: 1},
   players: [userSchema.schema],
   requests: [requestSchema.schema],
-  status: { type: String, enum: ['Joining', 'Players confirmed', 'Finished', 'Cancelled'], default: 'Joining' },
+  status: { type: String, enum: ['JOINING', 'READY', 'FINISHED', 'CANCELLED'], default: 'JOINING' },
   date: Date,
   time: String,
   description: String,

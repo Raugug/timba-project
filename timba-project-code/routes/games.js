@@ -40,15 +40,24 @@ router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next)
   }).catch(e =>  next(e))
 })
 
-//READ GAME DETAILS
-
-
-
 //GAMES LIST
 router.get('/list', ensureLoggedIn(), (req, res, next) => {
   Game.find().populate('hostId').then(games => {
     res.render('games/list', {games});
 }).catch(e => console.log(e))
+})
+
+//READ GAME DETAILS
+router.get('/:gameId', ensureLoggedIn(), (req, res, next) => {
+  Game.findById(req.params.gameId).populate('hostId').populate('players').then(game => {
+    //User.find().populate('authorId')
+    console.log(game)
+    return game;
+  })
+    .then(game => {
+      res.render('games/show', { game,
+        gameStr: JSON.stringify(game) })
+    }).catch(e => console.log(e))
 })
 
 //UPDATE GAME
