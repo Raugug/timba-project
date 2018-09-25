@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       bounds.extend(marker.position);
     
     map.fitBounds(bounds);
-    createInfo(game.hostId.username, game.level, game.date, game.time, game.photo);
+    createInfo(game.hostId.username, game.level, game.date, game.time, game.photo, marker);
   });
 
 }, false);

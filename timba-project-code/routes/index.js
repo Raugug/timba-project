@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
       games,
       user,
       gameStr: JSON.stringify(games),
-      user: JSON.stringify(user)
+      userStr: JSON.stringify(user)
     });
   })
   
