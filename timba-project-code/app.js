@@ -62,7 +62,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 //SESSION MIDDLEWARE
 app.use(session({
   secret: "basic-auth-secret",
-  cookie: { maxAge: 300000 },
+  cookie: { maxAge: 3000000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60 // 1 day

@@ -9,6 +9,7 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const multer = require('multer');
 const upload = multer({ dest: './public/uploads/' });
 
+
 // Get Profile User
 router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
   User.findById(req.params.userId)
@@ -16,6 +17,7 @@ router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
     res.render('user/profile', {player});
   }).catch(e => next(e))
 });
+
 
 // Get Players List
 
