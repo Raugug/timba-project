@@ -6,3 +6,6 @@ npm-debug.log
 
 # Environment Variables should NEVER be published
 .env
+
+timba-project/timba-project-code/public/stylesheets/style.css
+timba-project/timba-project-code/public/stylesheets/style.css.map
