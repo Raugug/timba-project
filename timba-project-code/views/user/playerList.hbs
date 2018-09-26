@@ -2,18 +2,21 @@
   <h3>Total List {{user.username}}</h3>
 
   <div>
-<ul>
-{{#each players}}
-<li>{{this.username}}
-   <a href="/player/compere/{{this._id}}">Compare</a>
-    <a href="/player/invite/{{this._id}}">Invite</a>
-</li>
-{{/each}}
-</ul>
+    <ol>
+      {{#each players}}
+      <li>{{this.username}}
+        <button class="btn btn-info btn-xs">
+          <a href="/player/myprofile/{{this._id}}">View detais</a>
+        </button>
+        <br>
+        {{!-- <button class="btn btn-info btn-xs">
+          <a href="/player/invite/{{this._id}}">Invite</a>
+        </button> --}}
+        <br>
+      </li>
+      {{/each}}
+    </ol>
 
   </div>
-
-
-
 
 </section>
