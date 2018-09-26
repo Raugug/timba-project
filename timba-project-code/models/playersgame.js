@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const playersgameSchema = Schema(
   {
-    playerId: { type: Schema.Types.ObjectId, ref: "User" },
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     gameId: { type: Schema.Types.ObjectId, ref: "Game" }
   },
   {

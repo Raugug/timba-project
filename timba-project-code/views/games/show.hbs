@@ -7,6 +7,11 @@
     <input type="submit" class="btn btn-warning" name="" value="JOIN GAME">
     </form>
     {{/unless}}
+    {{#if usergame}}
+    <form action="/game/delete/{{game._id}}" method="post">
+    <input type="submit" class="btn btn-danger" name="" value="LEAVE GAME">
+    </form>
+    {{/if}}
     
     <h3>Hosted By: {{game.hostId.username}}</h3>
     <h4>{{game.description}}</h4>

@@ -7,9 +7,7 @@ const reviewSchema = Schema({
   vision:  Number,
   selfControl: Number,
   courage: Number,
-  sharp: Number,
-  handsRatio: {type: String, enum: ['Low', 'Mediun', 'High']},
-  toHost: { type: Boolean, default: false }
+  sharp: Number
 },
 {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
