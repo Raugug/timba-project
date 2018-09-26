@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: white; }
+
+#map {
+  height: 800px; }
+
+#myChart {
+  border: 1px solid blue; }
+
+.mainTitle {
+  font-weight: bolder; }
+  .mainTitle a {
+    color: #4e0202;
+    text-decoration: none; }
+
+/*# sourceMappingURL=style.css.map */
