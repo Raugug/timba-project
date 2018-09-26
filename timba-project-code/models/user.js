@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const reviewSchema = require("./review");
-const requestSchema = require("./request");
 
 const userSchema = Schema(
   {
@@ -11,13 +9,11 @@ const userSchema = Schema(
     isHost: { type: Boolean, default: false },
     photo: { type: String, default: "../uploads/defaultimageuser" },
     level: { type: Number, default: 1 },
-    reviews: [reviewSchema.schema],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
     vision: { type: Number, default: 1 },
     selfControl: { type: Number, default: 1 },
     courage: { type: Number, default: 1 },
     sharp: { type: Number, default: 1 },
-    //stats: {type: [], default: [1, 1, 1, 1] },
-    requests: [requestSchema.schema],
     totalGames: Number,
     validGames: Number,
     //location: { type: { type: String }, coordinates: [Number] }

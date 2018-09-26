@@ -7,9 +7,14 @@ const Game = require('../models/game');
 /* GET home page */
 router.get('/', (req, res, next) => {
   Game.find().populate('hostId').then(games =>{
+    let user = req.user;
+    console.log("HELLO")
+    console.log(user)
     res.render('index', {
       games,
-      gameStr: JSON.stringify(games)
+      user,
+      gameStr: JSON.stringify(games),
+      userStr: JSON.stringify(user)
     });
   })
   

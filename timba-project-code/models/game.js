@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
-const userSchema = require('./user');
-const requestSchema = require('./request');
 
 const gameSchema = Schema({
   hostId: { type: Schema.Types.ObjectId, ref: "User" },
@@ -9,9 +7,8 @@ const gameSchema = Schema({
   blinds: String,
   photo: {type: String, default:'../uploads/defaultimagegame'},
   level: {type: Number, default: 1},
-  players: [userSchema.schema],
-  requests: [requestSchema.schema],
-  status: { type: String, enum: ['Joining', 'Players confirmed', 'Finished', 'Cancelled'], default: 'Joining' },
+  players: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  status: { type: String, enum: ['Joining', 'Ready', 'Closed', 'Cancelled'], default: 'Joining' },
   date: Date,
   time: String,
   description: String,
