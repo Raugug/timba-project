@@ -10,6 +10,7 @@ const userSchema = Schema(
     photo: { type: String, default: "../uploads/defaultimageuser" },
     level: { type: Number, default: 1 },
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+    games: [{ type: Schema.Types.ObjectId, ref: "Game" }],
     vision: { type: Number, default: 1 },
     selfControl: { type: Number, default: 1 },
     courage: { type: Number, default: 1 },

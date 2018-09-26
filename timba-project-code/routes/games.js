@@ -75,12 +75,19 @@ router.get('/:gameId', ensureLoggedIn(), (req, res, next) => {
 router.post('/add/:gameId', ensureLoggedIn(), (req, res, next) => {
   console.log("ENTRA EN POST")
   let userId = req.user._id;
-     Game.findByIdAndUpdate(req.params.gameId, {$push: {players: userId}}).populate('players').then(game => {
-      Usergame.create({gameId: game._id, userId: req.user._id}).then((usergame)=>{console.log("usergame created", usergame)});
+    console.log("user id",req.user._id);
+    //console.log("game id",usergame.gameId);
+      User.findByIdAndUpdate(req.user._id, {$push: {games: req.params.gameId}}).then(()=>{
 
-      let stringId = encodeURIComponent(game._id);
-      res.redirect(`/game/${stringId}`);
-    })
+        Game.findByIdAndUpdate(req.params.gameId, {$push: {players: userId}}).populate('players').then(game => {
+         Usergame.create({gameId: game._id, userId: req.user._id}).then((usergame)=>{console.log("usergame created", usergame);
+        
+         let stringId = encodeURIComponent(game._id);
+         res.redirect(`/game/${stringId}`);
+        })
+         
+       })
+      })
 })
 //DELETE USER FROM GAME
 router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
