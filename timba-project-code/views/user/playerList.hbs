@@ -1,21 +1,19 @@
 <section class="main-menu">
   <h3>Total List {{user.username}}</h3>
 
-  <div>
-    <ol>
+  <div id="usersdiv">
+    <ul id="userslist">
       {{#each players}}
       <li>{{this.username}}
         <button class="btn btn-info btn-xs">
           <a href="/player/myprofile/{{this._id}}">View detais</a>
         </button>
-        <br>
-        {{!-- <button class="btn btn-info btn-xs">
-          <a href="/player/invite/{{this._id}}">Invite</a>
-        </button> --}}
-        <br>
+        <button class="btn btn-info btn-xs">
+          <a href="/review/{{this._id}}">REVIEW</a>
+        </button>
       </li>
       {{/each}}
-    </ol>
+    </ul>
 
   </div>
 

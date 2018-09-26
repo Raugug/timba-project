@@ -11,16 +11,17 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 //CREATE REVIEW
 
 router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
-  User.findById(req.params.userId).populate('reviews').then(user =>{
-    console.log("PASA 1er find y busca reviews en", user.reviews._id);
-    Review.find({_id:user.reviews._id}, {authorId: req.user._id}).populate('authorId').then(review => {
-      console.log("ENCUENTRA REVIEW PARA ESE USER:", review)
-      res.render('review/edit', {review})
-    
-    })
-    console.log("LLEGA AQUÍ");
-    
-  }).catch(e => console.log(e))
+
+    Review.find({$and:[{authorId:req.user._id}, {ownerId: req.params._id}]})
+    .then(review => {
+      console.log("EXISTE REVIEW", review);
+      User.findById(req.params.userId)
+      .then((owner) => {
+        let author = req.user;
+        console.log(owner)
+        res.render('review/edit', {review, owner, author})
+      })
+    }).catch(e => console.log(e))
 })
 
 //EDIT REVIEW

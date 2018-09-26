@@ -1,1 +1,56 @@
 REVIEW VIEW
+
+<section id="review-form">
+
+<h1>YOU NEED TO EVALUATE {{{owner.username}}}</h1>
+
+<form action="/review/edit" method="post">
+  <div class="form-group">
+    <label for="content-input">Opinion</label>
+    <input type="textarea" name="content" placeholder="{{review.content}}" class="form-control">
+  </div>
+  
+  <div class="form-group">
+    <label for="vision-input">Vision</label>
+    <select name="vision" class="form-control">
+      <option value=1 selected></option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="selfControl-input">Self-Control</label>
+    <select name="selfControl" class="form-control">
+      <option value=1 selected>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="courage-input">Courage</label>
+    <select name="courage" class="form-control">
+      <option value=1 selected>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="sharp-input">Sharp</label>
+    <select name="sharp" class="form-control">
+      <option value=1 selected>1</option>
+      <option value=2>2</option>
+      <option value=3>3</option>
+      <option value=4>4</option>
+      <option value=5>5</option>
+    </select>
+  </div>
+  <input type="submit" name="" value="REVIEW">
+</form>
+
+</section>

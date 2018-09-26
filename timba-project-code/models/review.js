@@ -4,6 +4,7 @@ const Schema   = mongoose.Schema;
 const reviewSchema = Schema({
   content: String,
   authorId: { type: Schema.Types.ObjectId, ref: "User" },
+  ownerId: { type: Schema.Types.ObjectId, ref: "User" },
   vision:  Number,
   selfControl: Number,
   courage: Number,
