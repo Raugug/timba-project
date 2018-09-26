@@ -9,22 +9,23 @@
   {{/if}}
 
   <div>
-    <form action="/player/edituser/{{player._id}}" method="post">
-      <p>Current User: {{{player.username}}}</p>
+    <form action="/player/edituser" method="post">
+      <p>Current User: </p>
       <label for="">New username: </label>
       <input type="text" name="username" value="{{player.username}}">
 
       <p>Current email: {{{player.email}}}</p>
       <label for="">New email: </label>
-      <input type="text" name="email" value="{{player.email}}">
+      <input type="email" name="email" value="{{player.email}}">
 
-      <p>Current photo: {{{player.photo}}}</p>
-      <label for="">New image: </label>
-      <input type="text" name="photo" value="{{player.photo}}">
-
-      <p>Current password: {{{player.password}}}</p>
+      <p>Current password: ***** </p>
       <label for="">New password: </label>
-      <input type="text" name="email" value="{{player.password}}">
+      <input type="text" name="password" value="{{player.password}}"> 
+
+       {{!-- <p>Current photo: {{{player.photo}}}</p>
+      <label for="">New image: </label>
+      <input type="text" name="photo" value="{{player.photo}}"> --}}
+
 
       <button type="submit">Edit {{player.username}}</button>
     </form>
