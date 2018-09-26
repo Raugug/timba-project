@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let chartData = {
     labels: ["Vision", "Selfcontrol", "Courage", "Sharp"],
     datasets: [{
-        label: "Player Stats A",
+        label: player.username,
         backgroundColor: "rgba(54, 162, 235, 0.2)",
         borderColor: "rgba(54, 162, 235, 1)",
-        data: [1, 2, 3, 4]
+        data: [player.vision, player.selfControl, player.courage, player.sharp]
        } 
       //{
       //   label: "Player Stats B",

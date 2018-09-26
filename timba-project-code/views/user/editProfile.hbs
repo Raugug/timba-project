@@ -1,0 +1,34 @@
+<section>
+
+  <h2>Edit Profile: {{{player.username}}}</h2>
+  {{#if errorMessage}}
+  <p class="error-message">
+
+    {{ errorMessage }}
+  </p>
+  {{/if}}
+
+  <div>
+    <form action="/player/edituser/{{player._id}}" method="post">
+      <p>Current User: {{{player.username}}}</p>
+      <label for="">New username: </label>
+      <input type="text" name="username" value="{{player.username}}">
+
+      <p>Current email: {{{player.email}}}</p>
+      <label for="">New email: </label>
+      <input type="text" name="email" value="{{player.email}}">
+
+      <p>Current photo: {{{player.photo}}}</p>
+      <label for="">New image: </label>
+      <input type="text" name="photo" value="{{player.photo}}">
+
+      <p>Current password: {{{player.password}}}</p>
+      <label for="">New password: </label>
+      <input type="text" name="email" value="{{player.password}}">
+
+      <button type="submit">Edit {{player.username}}</button>
+    </form>
+  </div>
+
+
+</section>
