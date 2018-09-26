@@ -83,7 +83,7 @@ router.get('/signup', ensureLoggedOut(), (req, res, next) => {
   
   router.post("/login", ensureLoggedOut(), passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true
   })

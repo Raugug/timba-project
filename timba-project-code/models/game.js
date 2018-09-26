@@ -8,7 +8,6 @@ const gameSchema = Schema({
   photo: {type: String, default:'../uploads/defaultimagegame'},
   level: {type: Number, default: 1},
   players: [{ type: Schema.Types.ObjectId, ref: "User" }],
-  //status: { type: String, enum: ['Joining', 'Ready', 'Closed', 'Cancelled'], default: 'Joining' },
   joining: { type: Boolean, default: true },
   ready: { type: Boolean, default: false },
   closed: { type: Boolean, default: false },

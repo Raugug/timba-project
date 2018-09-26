@@ -16,13 +16,11 @@ const userSchema = Schema(
     sharp: { type: Number, default: 1 },
     totalGames: Number,
     validGames: Number,
-    //location: { type: { type: String }, coordinates: [Number] }
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
   }
 );
 
-//userSchema.index({ location: '2dsphere' });
 const User = mongoose.model("User", userSchema);
 module.exports = User;

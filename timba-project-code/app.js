@@ -97,10 +97,12 @@ app.use((req, res, next) => {
 const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
 const gameRoutes = require("./routes/games");
+const reviewRoutes = require("./routes/reviews");
 const userRoutes = require('./routes/user'); // ruta fisica
 app.use("/", index);
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 app.use('/player', userRoutes); // prefijo ruta navegador
 app.use("/game", gameRoutes);
+app.use("/review", reviewRoutes);
 
 module.exports = app;
