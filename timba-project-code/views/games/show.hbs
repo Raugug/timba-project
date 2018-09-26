@@ -2,6 +2,25 @@
   <div class="gameInfo">
     <img src="{{game.photo}}" alt="Game Image">
     <hr>
+  
+    
+    {{#if game.joining}}
+    <form action="/game/ready/{{game._id}}" method="post">
+    <label for="status1"> Change Status: </label>
+    <input type="submit" class="btn btn-warning" name="" id="status1" value="JOINING">
+    </form>
+    {{/if}}
+    {{#if game.ready}}
+    <form action="/game/close/{{game._id}}" method="post">
+    <label for="status2"> Change Status: </label>
+    <input type="submit" class="btn btn-success" name="" id="status2" value="READY">
+    </form>
+    {{/if}}
+    {{#if game.closed}}
+    <button class="btn btn-danger">CLOSED</button>
+    {{/if}}
+    
+
     {{#unless usergame}}
     <form action="/game/add/{{game._id}}" method="post">
     <input type="submit" class="btn btn-warning" name="" value="JOIN GAME">
@@ -21,11 +40,8 @@
     <p>Buy-In: {{game.buyIn}}</p>
     <p>Blinds: {{game.blinds}}</p>
     
-    <p>Numbe of players: {{game.playersNum}}</p>
-    <p>Numbe of players: {{game.playersNum}}</p>
   </div>
 
-  <span>{{game.status}}</span>
 
   <div class="gamePlayers">
     <h3>PLAYERS JOINED:</h3>

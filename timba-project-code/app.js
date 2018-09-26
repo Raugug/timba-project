@@ -19,7 +19,7 @@ const upload = multer({ dest: '../public/uploads/' });
 
 mongoose
   .connect(
-    "mongodb://localhost/timba-project-code",
+    process.env.DBURL,
     { useNewUrlParser: true }
   )
   .then(x => {

@@ -18,12 +18,15 @@
     <button class="btn btn-danger">
       <a href='/player/list'>PLAYERS</a>
     </button>
+    <button class="btn btn-danger">
+      <a href='/game/hostlist'>MY GAMES</a>
+    </button>
     {{#if user.isHost}}
     <button class="btn btn-danger">
       <a href="/game/new">CREATE GAME</a>
     </button>
     <button class="btn btn-danger">
-      <a href='/player/{{user._id}}'>MY GAMES</a>
+      <a href='/game/hostlist'>GAMES AS HOST</a>
     </button>
     {{else}}
     <form action="/" method="post">

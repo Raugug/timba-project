@@ -47,14 +47,25 @@ router.get('/list', ensureLoggedIn(), (req, res, next) => {
 }).catch(e => console.log(e))
 })
 
+//GAME LIST BY HOST
+router.get('/hostlist', ensureLoggedIn(), (req, res, next) => {
+  Game.find({hostId: req.user._id}).populate('hostId').then(games => {
+    let hosting= true;
+    let user = req.user;
+    res.render('games/list', {games, hosting, user});
+}).catch(e => console.log(e))
+})
+
 //GAME DETAIL
 router.get('/:gameId', ensureLoggedIn(), (req, res, next) => {
   Game.findById(req.params.gameId).populate('hostId').populate('players')
     .then(game => {
       Usergame.find({gameId:game._id, userId: req.user._id}).populate('gameId').then(usergame => {
         console.log("HERE: USERGAME ALREADY IN GAME", usergame);
-    
-        res.render('games/show', { usergame, game,
+        let imHost= false;
+        if (game.hostId == req.user._id){imHost = true;} 
+        let user = req.user;
+        res.render('games/show', { usergame, game, user, imHost,
           gameStr: JSON.stringify(game) })
         })
     }).catch(e => console.log(e))
@@ -87,13 +98,24 @@ router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
 
 
 //////////// HOST /////////////
-//GAME LIST BY HOST
-
 //GET UPDATE GAME
-
-//POST TO READY
-//POST TO CLOSED
-
-//POST TO CANCELLED
+router.post('/ready/:gameId', ensureLoggedIn(), (req, res, next) =>{
+  Game.findByIdAndUpdate(req.params.gameId, {ready: true, joining: false}).populate('players').then(game =>{
+    let stringId = encodeURIComponent(game._id);
+    res.redirect(`/game/${stringId}`);
+  })
+})
+router.post('/close/:gameId', ensureLoggedIn(), (req, res, next) =>{
+  Game.findByIdAndUpdate(req.params.gameId, {closed: true, ready: false}).populate('players').then(game =>{
+    let stringId = encodeURIComponent(game._id);
+    res.redirect(`/game/${stringId}`);
+  })
+})
+router.post('/joining/:gameId', ensureLoggedIn(), (req, res, next) =>{
+  Game.findByIdAndUpdate(req.params.gameId, {ready: false, joining: true}).populate('players').then(game =>{
+    let stringId = encodeURIComponent(game._id);
+    res.redirect(`/game/${stringId}`);
+  })
+})
 
 module.exports = router;
