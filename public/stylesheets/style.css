@@ -1,5 +1,6 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: 'Signika', sans-serif;
   background: url("https://res.cloudinary.com/dvd0xwpmc/image/upload/v1538061933/img/background.jpg");
   background-size: cover;
   background-repeat: no-repeat; }
@@ -14,13 +15,34 @@ header {
   header button {
     margin: 0px 10px; }
 
+footer {
+  background-color: black;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  footer h4 {
+    color: #817b7b; }
+
 a {
   color: #ffffff; }
 
 .index-title {
-  display: flex; }
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; }
+  .index-title h1 {
+    color: white;
+    font-size: 35px; }
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px; }
 
 #map {
+  width: 90%;
   height: 800px;
   border-radius: 1%; }
 

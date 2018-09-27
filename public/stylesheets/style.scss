@@ -1,14 +1,9 @@
-
-
-
-
 body {
-  //padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px; //"Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Signika', sans-serif;
   background: url("https://res.cloudinary.com/dvd0xwpmc/image/upload/v1538061933/img/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 header {
@@ -20,8 +15,20 @@ header {
   height: 120px;
   
     button {
-      margin: 0px 10px;;
+      margin: 0px 10px;
     }
+}
+footer {
+  background-color: black;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    color: rgb(129, 123, 123);
+   
+  }
 }
 
 a {
@@ -30,10 +37,23 @@ a {
 
 .index-title {
   display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  h1 {
+    color: white;
+    font-size: 35px;
+  }
   
+}
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 #map {
+  width: 90%;
   height:800px;
   border-radius:1%;
 }
