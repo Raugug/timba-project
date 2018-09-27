@@ -19,6 +19,11 @@
     {{#if game.closed}}
     <button class="btn btn-danger">CLOSED</button>
     {{/if}}
+    {{#if hosting}}
+    <button class="btn btn-danger">
+      <a href='/game/delete/{{this._id}}'>DELETE</a>
+    </button>
+    {{/if}}
     
 
     {{#unless usergame}}

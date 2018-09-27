@@ -4,9 +4,7 @@ const User = require('../models/user');
 const Game = require('../models/game');
 const Review = require('../models/review');
 const Usergame = require('../models/usergames');
-const passport = require('passport');
 const router = express.Router();
-const bcryptSalt = 10;
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const multer = require('multer');
 const upload = multer({ dest: './public/uploads/' });
@@ -19,7 +17,7 @@ router.get('/new', ensureLoggedIn(), (req, res, next) => {
 
 router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next) => {
     console.log("ENTRA GAME NEW");
-    let date ='YYYY-MM-DD'
+    let date = req.body.date.substring(0, 12);
     let hostId = req.user._id;
     let photo = `/uploads/${req.file.filename}`;
     let description = req.body.description;
@@ -27,7 +25,7 @@ router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next)
     let level = req.body.level;
     let blinds = req.body.blinds;
     let buyIn = req.body.buyIn;
-    date = req.body.date;
+    console.log("DATE", date); 
     let time = req.body.time;
     let location = {
       type: 'Point',
@@ -76,7 +74,6 @@ router.post('/add/:gameId', ensureLoggedIn(), (req, res, next) => {
   console.log("ENTRA EN POST")
   let userId = req.user._id;
     console.log("user id",req.user._id);
-    //console.log("game id",usergame.gameId);
       User.findByIdAndUpdate(req.user._id, {$push: {games: req.params.gameId}}).then(()=>{
 
         Game.findByIdAndUpdate(req.params.gameId, {$push: {players: userId}}).populate('players').then(game => {
@@ -110,7 +107,7 @@ router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
 })
 
 //DELETE GAME
-router.get("/delete/:gameId", (req, res) => {
+/* router.get("/delete/:gameId", (req, res) => {
 
   Game.findByIdAndRemove(req.params.gameId, (err, game) => {
     if (err) {
@@ -118,11 +115,11 @@ router.get("/delete/:gameId", (req, res) => {
     }
     return res.redirect("/");
   });
-});
+}); */
 
 
 //////////// HOST /////////////
-//GET UPDATE GAME
+// UPDATE GAME
 router.post('/ready/:gameId', ensureLoggedIn(), (req, res, next) =>{
   Game.findByIdAndUpdate(req.params.gameId, {ready: true, joining: false}).populate('players').then(game =>{
     let stringId = encodeURIComponent(game._id);

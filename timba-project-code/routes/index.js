@@ -8,8 +8,6 @@ const Game = require('../models/game');
 router.get('/', (req, res, next) => {
   Game.find().populate('hostId').then(games =>{
     let user = req.user;
-    console.log("HELLO")
-    console.log(user)
     res.render('index', {
       games,
       user,
@@ -26,7 +24,6 @@ router.post('/', ensureLoggedIn(), (req, res, next) => {
   const hostInfo = {isHost: true};
 
   User.findByIdAndUpdate(userId, hostInfo, { new: true }, (err, theUser) => {
-    console.log(theUser)
     if (err) {
       next(err);
       return;

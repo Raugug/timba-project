@@ -9,7 +9,6 @@ const reviewSchema = Schema({
   selfc: Number,
   courage: Number,
   sharp: Number,
-  level: Number,
 },
 {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

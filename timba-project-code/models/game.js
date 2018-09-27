@@ -11,7 +11,7 @@ const gameSchema = Schema({
   joining: { type: Boolean, default: true },
   ready: { type: Boolean, default: false },
   closed: { type: Boolean, default: false },
-  date: Date,
+  date: String,
   time: String,
   description: String,
   buyIn: String,

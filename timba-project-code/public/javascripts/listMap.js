@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 14,
   });
 
   geolocalize().then(center => {
@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
         title: `<img src="${game.photo}">`+'\n'+game.hostId.username+'\n'+ game.level+'\n'+ game.date+' | '+ game.time,
       });
       if (user){
-        if (user.level > game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png');}
-        if (user.level == game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');}
+        if (Math.floor(user.level) > game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png');}
+        if (Math.floor(user.level) == game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');}
       }
-      console.log("MARKER: ", marker);
+      //console.log("MARKER: ", marker);
       bounds.extend(marker.position);
       createInfo(game.hostId.username, game.level, game.date, game.time, game.photo, marker);
     })
