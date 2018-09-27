@@ -6,26 +6,24 @@ const passport = require('passport');
 const router = express.Router();
 const bcryptSalt = 10;
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-const multer = require('multer');
-const upload = multer({ dest: './public/uploads/' });
+//const multer = require('multer');
+const uploadCloud = require('../config/cloudinary.js');
 
 router.get('/signup', ensureLoggedOut(), (req, res, next) => {
   res.render('auth/signup', {
     errorMessage: ''});
   });
 
-  router.post('/signup', [ensureLoggedOut(), upload.single('photoInput')], (req, res, next) => {
+  router.post('/signup', [ensureLoggedOut(), uploadCloud.single('photo')], (req, res, next) => {
     console.log("Entra /post Signup");
     const {
       nameInput,
       emailInput,
       passwordInput,
     } = req.body;
-    let photoInput;
-    if (req.file != undefined){
-      photoInput = `../uploads/${req.file.filename}`}
-      else {photoInput = '../uploads/defaultimageuser'}
-  
+    
+    const photo = req.file.url;
+
     if (emailInput === '' || passwordInput === '') {
       res.render('auth/signup', {
         errorMessage: 'Enter both email and password to sign up.'
@@ -48,19 +46,19 @@ router.get('/signup', ensureLoggedOut(), (req, res, next) => {
       const salt = bcrypt.genSaltSync(bcryptSalt);
       const hashPass = bcrypt.hashSync(passwordInput, salt);
       //console.log(hashPass);
-      const userSubmission = {
+      /* const userSubmission = {
         username: nameInput,
         email: emailInput,
         password: hashPass,
         photo: photoInput
       };
-      console.log("userSubmission", userSubmission);
+      console.log("userSubmission", userSubmission); */
   
       const theUser = new User({
         username: nameInput,
         email: emailInput,
         password: hashPass,
-        photo: photoInput
+        photo,
       });
   
       theUser.save((err) => {

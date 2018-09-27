@@ -1,10 +1,4 @@
 <section id="myprofile">
-  <button class="btn btn-info">
-    <a href='/player/graphuser'>Show my Stats</a>
-  </button>
-  <button class="btn btn-warning">
-    <a href='/player/edituser'>Edit my Profile</a>
-  </button>
 
   <section class="profile">
     {{#if errorMessage}}
@@ -16,6 +10,9 @@
 
       <img src="{{{player.photo}}}" alt="">
       <hr>
+      <button class="btn btn-warning">
+        <a href='/player/edituser'>EDIT</a>
+      </button>
       <h2>User: {{{player.username}}}</h2>
       <h2>Email: {{{player.email}}} </h2>
       <h3>LEVEL: {{{player.level}}}</h3>
@@ -31,8 +28,9 @@
 
 
   </section>
-  <div></div>
-  <canvas id="myChart" width="250px" height="250px"></canvas>
+  <div class="chart">
+  <canvas id="myChart"></canvas>
+  </div>
 </section>
 <script>
     window.player = {{{ playerStr }}};

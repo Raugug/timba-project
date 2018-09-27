@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ctx = document.getElementById("myChart").getContext("2d");
-  ctx.height = 250;
 
   let chartData = {
     labels: ["Vision", "Selfcontrol", "Courage", "Sharp"],
@@ -10,11 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         borderColor: "rgba(54, 162, 235, 1)",
         data: [player.vision, player.selfControl, player.courage, player.sharp]
        } 
-      //{
-      //   label: "Player Stats B",
-      //   backgroundColor: "rgba(89, 222, 26, 0.2)",
-      //   borderColor: "rgba(89, 222, 26, 1)",
-      //   data: [3, 3, 3, 3]      }
     ]
   };
   let chartOption = {
@@ -23,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
         beginAtZero: false,
         min: 0,
         max: 5,
-        stepZise: 1
+        stepZise: 0.1
       }
     },
     legend: {
-      position: "bottom"
+      position: "top"
     }
   };
 

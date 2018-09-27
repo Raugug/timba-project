@@ -1,13 +1,12 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Game = require('../models/game');
 const Review = require('../models/review');
 const Usergame = require('../models/usergames');
 const router = express.Router();
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-const multer = require('multer');
-const upload = multer({ dest: './public/uploads/' });
+//const multer = require('multer');
+const uploadCloud = require('../config/cloudinary.js');
 
 
 //CREATE GAME
@@ -15,17 +14,16 @@ router.get('/new', ensureLoggedIn(), (req, res, next) => {
   res.render('games/create');
   });
 
-router.post('/new', [ensureLoggedIn(), upload.single('photo')], (req, res, next) => {
+router.post('/new', [ensureLoggedIn(), uploadCloud.single('photo')], (req, res, next) => {
     console.log("ENTRA GAME NEW");
     let date = req.body.date.substring(0, 12);
     let hostId = req.user._id;
-    let photo = `/uploads/${req.file.filename}`;
+    let photo = req.file.url;
     let description = req.body.description;
     let playersNum = req.body.playersNum;
     let level = req.body.level;
     let blinds = req.body.blinds;
-    let buyIn = req.body.buyIn;
-    console.log("DATE", date); 
+    let buyIn = req.body.buyIn; 
     let time = req.body.time;
     let location = {
       type: 'Point',
