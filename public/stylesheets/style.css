@@ -1,6 +1,18 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url("https://res.cloudinary.com/dvd0xwpmc/image/upload/v1538061933/img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+header {
+  background-color: black;
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  height: 120px; }
+  header button {
+    margin: 0px 10px; }
 
 a {
   color: #ffffff; }
