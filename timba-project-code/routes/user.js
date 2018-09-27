@@ -75,6 +75,20 @@ router.get('/list', ensureLoggedIn(), (req, res, nest) => {
   }).catch(e => next(e))
 });
 
+// Get my Games List
+router.get('/mylist', ensureLoggedIn(), (req, res, next) =>{
+  User.findById(req.user._id)
+  .populate('games')
+  .then(player => {
+    console.log(player.games)
+    res.render('user/playerGames',{player} )
+  }).catch(err => next(err))
+});
+
+//{games:player.games}
+
+
+
 // Get other Profile User
 router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
   User.findById(req.params.userId)

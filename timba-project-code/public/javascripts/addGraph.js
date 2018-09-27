@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
         stepZise: 0.1
       }
     },
+    pointLabels: {
+      fontSize: 18
+    },
     legend: {
       position: "top"
     }
@@ -32,6 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       options: cOption
     });
   };
-
+  
   printChart(chartData, chartOption);
 });
