@@ -25,14 +25,15 @@
   </div>
   <button> Go back </button>
   <div>
-    <h3>My stats</h3>
-    <canvas id="myChart" width="150px" height="150px"></canvas>
 
+    <h3>My stats</h3>
     <button class="btn btn-info">
       <a href='/player/compareusers/{{player._id}}'>Want to campare?</a>
     </button>
   </div>
-
+  <div class="chart-container" style="position: relative; height:400px; width:400px">
+    <canvas id="myChart"></canvas>
+</div>
 </section>
 <script>
   window.player = {{{ playerStr }}}

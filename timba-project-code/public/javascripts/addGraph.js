@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ]
   };
   let chartOption = {
+    // maintainAspectRatio: false,
     scale: {
       ticks: {
         beginAtZero: false,
@@ -25,8 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
         stepZise: 1
       }
     },
+    pointLabels: {
+      fontSize: 18
+    },
     legend: {
-      position: "bottom"
+      position: "bottom",
+      fontSize: 18
     }
   };
 
@@ -37,6 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
       options: cOption
     });
   };
-
+  
   printChart(chartData, chartOption);
 });

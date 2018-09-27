@@ -1,3 +1,7 @@
+
+
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -11,8 +15,13 @@ a {
   height:800px;
 }
 
-#myChart {
+#myChart { 
+  padding: 0;
+  margin: 0;
   border: 1px solid blue; 
+  // height: 300px !important; 
+  // width: 300px !important; 
+
 }
 .mainTitle {
   font-weight: bolder;
