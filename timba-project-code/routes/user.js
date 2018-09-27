@@ -100,22 +100,4 @@ router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
 
 
 
-
-// router.post("/login", ensureLoggedOut(), passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "/login",
-//   failureFlash: true,
-//   passReqToCallback: true
-// })
-// )
-// router.get('/logout', ensureLoggedIn(), (req,res) => {
-//   req.logout();
-//   res.redirect('/');
-// })
-
-
-
-
-
-
 module.exports = router;

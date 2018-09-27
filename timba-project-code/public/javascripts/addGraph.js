@@ -9,15 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
         borderColor: "rgba(54, 162, 235, 1)",
         data: [player.vision, player.selfControl, player.courage, player.sharp]
        } 
-      //{
-      //   label: "Player Stats B",
-      //   backgroundColor: "rgba(89, 222, 26, 0.2)",
-      //   borderColor: "rgba(89, 222, 26, 1)",
-      //   data: [3, 3, 3, 3]      }
+      
     ]
   };
   let chartOption = {
-    // maintainAspectRatio: false,
     scale: {
       ticks: {
         beginAtZero: false,

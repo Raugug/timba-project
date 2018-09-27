@@ -5,23 +5,17 @@
     {{ errorMessage }}
   </p>
   {{/if}}
-  {{!-- <button class="btn btn-primary">
-    <a href='/player/list/{{player._id}}'>View Players List</a>
-  </button>
-  <button class="btn btn-info">
-    <a href='/player/graphuser/{{player._id}}'>Show my Stats</a>
-  </button> --}}
+
   <div>
     <h3>User: {{{player.username}}}</h3>
     <p>Total Games {{{player.totalGames}}}</p>
     <p>Valid Games {{{player.validGames}}}</p>
     <p>Player Level {{{player.level}}}</p>
-    {{!-- {{#each player.stats}} --}}
     <p>Vision Level: {{{player.vision}}}</p>
     <p>Self COntrol: {{{player.selfControl}}}</p>
     <p>Courage: {{{player.courage}}}</p>
     <p>Sharp: {{{player.sharp}}}</p>
-    {{!-- {{/each}} --}}
+
   </div>
   <button> Go back </button>
   <div>
