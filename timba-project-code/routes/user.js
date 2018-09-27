@@ -2,27 +2,29 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Review = require('../models/review');
-const passport = require('passport');
 const router = express.Router();
 const bcryptSalt = 10;
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
-const multer = require('multer');
-const upload = multer({ dest: './public/uploads/' });
 
 
 // Get my Profile
 router.get('/myprofile', ensureLoggedIn(), (req, res, next) => {
   User.findById(req.user._id)
   .then(player => {
-    res.render('user/profile', {player});
+    res.render('user/profile', {player, 
+      playerStr: JSON.stringify(player)
+    });
   }).catch(err => next(err))
 });
 
 // View other profile
 router.get('/myprofile/:userId', ensureLoggedIn(), (req, res, next) => {
-  User.findById(req.params.userId)
+  const userId = req.params.userId;
+  User.findById(userId)
   .then(player => {
-    res.render('user/otherProfile', {player});
+    res.render('user/otherProfile', {
+      player, 
+      playerStr: JSON.stringify(player)});
   }).catch(err => next(err))
 });
 
@@ -80,28 +82,6 @@ router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
     res.render('user/profile', {player});
   }).catch(e => next(e))
 });
-
-
-
-
-
-
-
-// router.post("/login", ensureLoggedOut(), passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "/login",
-//   failureFlash: true,
-//   passReqToCallback: true
-// })
-// )
-// router.get('/logout', ensureLoggedIn(), (req,res) => {
-//   req.logout();
-//   res.redirect('/');
-// })
-
-
-
-
 
 
 module.exports = router;

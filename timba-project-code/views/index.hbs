@@ -1,49 +1,12 @@
 <section class="main-menu">
 
   <h2>INDEX VIEW</h2>
-  {{#if user}}
   <h2>{{title}}</h2>
   <h3>Welcome {{user.username}}</h3>
-  <section id="nav-bar">
-
-    <button class="btn btn-danger">
-      <a href='/player/myprofile'>MY PROFILE</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/game/mylist'>MY GAMES</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/auth/logout'>LOG OUT</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href="/game/list">ALL GAMES</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/player/list'>ALL PLAYERS</a>
-    </button>
-    {{#if user.isHost}}
-    <button class="btn btn-danger">
-      <a href="/game/new">CREATE GAME</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/game/hostlist'>MY GAMES AS HOST</a>
-    </button>
-    {{else}}
-    <form action="/" method="post">
-      <input class="btn btn-warning" type="submit" name="" value="BECOME A HOST">
-    </form>
-    {{/if}}
-    {{else}}
-    <button class="btn btn-danger">
-      <a href='/auth/signup'>SIGN UP</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/auth/login'>LOG IN</a>
-    </button>
-    {{/if}}
-  </section>
-
+  {{#if user}}
   <div id="map"></div>
+  {{else}}
+  {{/if}}
 </section>
 <script>
     window.games = {{{ gameStr }}};

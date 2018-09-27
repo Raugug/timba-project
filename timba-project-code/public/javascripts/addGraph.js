@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ctx = document.getElementById("myChart").getContext("2d");
+  ctx.height = 250;
 
   let chartData = {
     labels: ["Vision", "Selfcontrol", "Courage", "Sharp"],

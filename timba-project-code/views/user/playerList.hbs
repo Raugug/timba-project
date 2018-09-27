@@ -1,20 +1,18 @@
 <section class="main-menu">
-  <h3>Total List {{user.username}}</h3>
+  <h1>PLAYERS</h1>
 
   <div id="usersdiv">
-    <ul id="userslist">
-      {{#each players}}
-      <li>{{this.username}}
-        <button class="btn btn-info btn-xs">
-          <a href="/player/myprofile/{{this._id}}">View detais</a>
-        </button>
-        <button class="btn btn-info btn-xs">
-          <a href="/review/{{this._id}}">REVIEW</a>
-        </button>
-      </li>
-      {{/each}}
-    </ul>
-
+    {{#each players}}
+    <div id="usersdiv">
+      <h3>{{this.username}}</h3>
+      <button class="btn btn-info btn-s">
+        <a href="/player/myprofile/{{this._id}}">VIEW DETAILS</a>
+      </button>
+      <button class="btn btn-info btn-s">
+        <a href="/review/{{this._id}}">REVIEW</a>
+      </button>
+    </div>
+    {{/each}}
   </div>
 
 </section>

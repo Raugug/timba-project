@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const reviewSchema = Schema({
-  content: String,
   authorId: { type: Schema.Types.ObjectId, ref: "User" },
   ownerId: { type: Schema.Types.ObjectId, ref: "User" },
+  content: String,
   vision:  Number,
-  selfControl: Number,
+  selfc: Number,
   courage: Number,
-  sharp: Number
+  sharp: Number,
+  level: Number,
 },
 {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

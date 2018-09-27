@@ -4,15 +4,17 @@ body {
 }
 
 a {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 
 #map {
   height:800px;
+  border-radius:1%;
 }
 
 #myChart {
-  border: 1px solid blue; 
+  border: 1px solid blue;
+  width: 250px;
 }
 .mainTitle {
   font-weight: bolder;
@@ -20,5 +22,32 @@ a {
   a {
     color: rgb(78, 2, 2);
     text-decoration: none;
+  }
+}
+#games-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-around;
+
+  .game-in-list{
+    border: 1px solid black;
+    border-radius:5%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    margin-top: 10px;
+    img {
+      width: 90%;;
+      height: 250px;
+      margin: 5% 5%;
+      border-radius:5%;
+    }
   }
 }

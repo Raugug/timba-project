@@ -1,42 +1,31 @@
-<section>
-  <h2>Profile from user: {{{player.username}}}</h2>
+<section class="profile">
   {{#if errorMessage}}
   <p class="error-message">
     {{ errorMessage }}
   </p>
   {{/if}}
+  <div class="user">
 
-  <div>
+    <img src="{{{player.photo}}}" alt="">
+    <hr>
     <h2>User: {{{player.username}}}</h2>
     <h2>Email: {{{player.email}}} </h2>
+    <h3>LEVEL: {{{player.level}}}</h3>
 
     <h3>Stats:</h3>
-    <ol>
-      <li>
-        <p>Total Games {{{player.totalGames}}}</p>
-      </li>
-      <li>
-        <p>Valid Games {{{player.validGames}}}</p>
-      </li>
-      <li>
-        <p>Player Level {{{player.level}}}</p>
-      </li>
-      <li>
-        <p>Vision Level: {{{player.vision}}}</p>
-      </li>
-      <li>
-        <p>Self COntrol: {{{player.selfControl}}}</p>
-      </li>
-      <li>
-        <p>Courage: {{{player.courage}}}</p>
-      </li>
-      <li>
-        <p>Sharp: {{{player.sharp}}}</p>
-      </li>
-
-    </ol>
+    <div class="user-stats">
+      <p>Vision: {{{player.vision}}}</p>
+      <p>Self-Control: {{{player.selfControl}}}</p>
+      <p>Courage: {{{player.courage}}}</p>
+      <p>Sharp: {{{player.sharp}}}</p>
+    </div>
   </div>
 
 
-
+  <canvas id="myChart" width="250px" height="250px"></canvas>
 </section>
+
+<script>
+    window.player = {{{ playerStr }}};
+</script>
+<script src="/javascripts/addGraph.js"></script>

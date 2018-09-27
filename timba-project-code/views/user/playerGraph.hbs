@@ -5,28 +5,20 @@
     {{ errorMessage }}
   </p>
   {{/if}}
-  {{!-- <button class="btn btn-primary">
-    <a href='/player/list/{{player._id}}'>View Players List</a>
-  </button>
-  <button class="btn btn-info">
-    <a href='/player/graphuser/{{player._id}}'>Show my Stats</a>
-  </button> --}}
   <div>
     <h3>User: {{{player.username}}}</h3>
     <p>Total Games {{{player.totalGames}}}</p>
     <p>Valid Games {{{player.validGames}}}</p>
     <p>Player Level {{{player.level}}}</p>
-    {{!-- {{#each player.stats}} --}}
     <p>Vision Level: {{{player.vision}}}</p>
     <p>Self COntrol: {{{player.selfControl}}}</p>
     <p>Courage: {{{player.courage}}}</p>
     <p>Sharp: {{{player.sharp}}}</p>
-    {{!-- {{/each}} --}}
   </div>
   <button> Go back </button>
   <div>
     <h3>My stats</h3>
-    <canvas id="myChart" width="150px" height="150px"></canvas>
+    <canvas id="myChart" width="250px" height="250px"></canvas>
 
     <button class="btn btn-info">
       <a href='/player/compareusers/{{player._id}}'>Want to campare?</a>
@@ -35,6 +27,6 @@
 
 </section>
 <script>
-  window.player = {{{ playerStr }}}
+    window.player = {{{ playerStr }}}:
 </script>
 <script src="/javascripts/addGraph.js"></script>

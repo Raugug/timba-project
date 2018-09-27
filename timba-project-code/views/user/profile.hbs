@@ -1,13 +1,4 @@
-<section>
-  <h2>User Profile: {{{player.username}}}</h2>
-  {{#if errorMessage}}
-  <p class="error-message">
-    {{ errorMessage }}
-  </p>
-  {{/if}}
-  <button class="btn btn-primary">
-    <a href='/player/list'>View Players List</a>
-  </button>
+<section id="myprofile">
   <button class="btn btn-info">
     <a href='/player/graphuser'>Show my Stats</a>
   </button>
@@ -15,31 +6,35 @@
     <a href='/player/edituser'>Edit my Profile</a>
   </button>
 
+  <section class="profile">
+    {{#if errorMessage}}
+    <p class="error-message">
+      {{ errorMessage }}
+    </p>
+    {{/if}}
+    <div class="user">
 
-  <div>
-    <h3>User: {{{player.username}}}</h3>
-    <p>Total Games {{{player.totalGames}}}</p>
-    <p>Valid Games {{{player.validGames}}}</p>
-    <p>Player Level {{{player.level}}}</p>
-    {{!-- {{#each player.stats}} --}}
-    <p>Vision Level: {{{player.vision}}}</p>
-    <p>Self COntrol: {{{player.selfControl}}}</p>
-    <p>Courage: {{{player.courage}}}</p>
-    <p>Sharp: {{{player.sharp}}}</p>
-    {{!-- {{/each}} --}}
-  </div>
+      <img src="{{{player.photo}}}" alt="">
+      <hr>
+      <h2>User: {{{player.username}}}</h2>
+      <h2>Email: {{{player.email}}} </h2>
+      <h3>LEVEL: {{{player.level}}}</h3>
+
+      <h3>Stats:</h3>
+      <div class="user-stats">
+        <p>Vision: {{{player.vision}}}</p>
+        <p>Self-Control: {{{player.selfControl}}}</p>
+        <p>Courage: {{{player.courage}}}</p>
+        <p>Sharp: {{{player.sharp}}}</p>
+      </div>
+    </div>
 
 
-
-
-  <button> Log Out </button>
-  {{!-- <div>
-    <h3>My stats</h3>
-    <canvas id="myChart" width="150px" height="150px"></canvas>
-    <button class="btn btn-primary">
-      <a href='/player/graphuser/{{player._id}}'>Want to campare?</a>
-    </button>
-  </div> --}}
-
+  </section>
+  <div></div>
+  <canvas id="myChart" width="250px" height="250px"></canvas>
 </section>
-{{!-- <script src="/javascripts/addGraph.js"></script> --}}
+<script>
+    window.player = {{{ playerStr }}};
+</script>
+<script src="/javascripts/addGraph.js"></script>
