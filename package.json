@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "sass timba-project/public/stylesheets/style.scss:timba-project/public/stylesheets/style.css; node ./bin/www",
+    "start": "sass compile timba-project/public/stylesheets/style.scss timba-project/public/stylesheets/style.css; node ./bin/www",
     "dev": "DEBUG=timba-project-code:* nodemon js,hbs ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
