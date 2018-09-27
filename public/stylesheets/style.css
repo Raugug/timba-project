@@ -17,6 +17,9 @@ header {
 a {
   color: #ffffff; }
 
+.index-title {
+  display: flex; }
+
 #map {
   height: 800px;
   border-radius: 1%; }
