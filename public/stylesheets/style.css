@@ -30,7 +30,8 @@ a {
 .index-title {
   display: flex;
   justify-content: space-between;
-  margin: 20px; }
+  margin: 20px;
+  display: inline-block; }
   .index-title h1 {
     color: white;
     font-size: 35px; }
