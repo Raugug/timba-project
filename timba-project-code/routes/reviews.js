@@ -45,11 +45,11 @@ router.post('/create/:userId', ensureLoggedIn(), (req, res, next) =>{
   
       User.findByIdAndUpdate(owner, {level: level, vision: vis, courage: cour, selfControl: self, sharp: shar})
       .then (player =>{
-        res.render('user/mypfofile')
-      })
-    })
-  })
-})
+        res.render('user/myprofile')
+      }).catch(e => console.log(e))
+    }).catch(e => console.log(e))
+  }).catch(e => console.log(e))
+}).catch(e => console.log(e))
 
 
 
