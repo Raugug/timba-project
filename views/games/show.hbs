@@ -4,6 +4,7 @@
     </div>
     <div class="buttons-game">
       <div>
+
       {{#if imHost}}
       {{#if game.joining}}
       <form action="/game/ready/{{game._id}}" method="post">
@@ -11,6 +12,7 @@
       <input type="submit" class="btn btn-success" name="" id="status1" value="READY">
       </form>
       {{/if}}
+
       {{#if game.ready}}
       <form action="/game/close/{{game._id}}" method="post">
       <label for="status2"> Change status to: </label>
@@ -22,32 +24,41 @@
       <input type="submit" class="btn btn-danger" name="" value="DELETE">
       </form>
       {{/if}}
+
       {{#if game.joining}}
       <button class="btn btn-warning">JOINING</button>
       {{/if}} 
+      
       {{#if game.ready}}
       <button class="btn btn-success">READY</button>
       {{/if}}
+
       {{#if game.closed}}
       <button class="btn btn-danger">CLOSED</button>
       {{/if}}
       
       </div>
       
+
       {{#if game.joining}}
       <div>
       {{#unless usergame}}
+
       <form action="/game/add/{{game._id}}" method="post">
       <input type="submit" class="btn btn-warning" name="" value="JOIN GAME">
       </form>
       {{/unless}}
+
       {{#if usergame}}
+
       <form action="/game/delete/{{game._id}}" method="post">
       <input type="submit" class="btn btn-danger" name="" value="LEAVE GAME">
       </form>
       {{/if}}
+
       </div>
       {{/if}}
+
     </div>
 
     <div>
@@ -64,14 +75,18 @@
   <div class="gamePlayers">
     <h3>PLAYERS JOINED:</h3>
     {{#each game}}
+
     {{#each this.players}}
+
     <div class="player">
       <h4 class="player-name">{{this.username}}</h4>
       <h4 class="level">LV: {{this.level}}</h4>
       <a href="/player/myprofile/{{this._id}}">VIEW DETAILS</a>
       {{#if game.closed}}
+
       <a href="/review/{{this._id}}">REVIEW</a>
       {{/if}}
+      
     </div>
     {{/each}}
     {{/each}}
