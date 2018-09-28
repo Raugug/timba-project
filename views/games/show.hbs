@@ -4,6 +4,24 @@
     </div>
     <div class="buttons-game">
       <div>
+      {{#if imHost}}
+      {{#if game.joining}}
+      <form action="/game/ready/{{game._id}}" method="post">
+      <label for="status1"> Change status to: </label>
+      <input type="submit" class="btn btn-success" name="" id="status1" value="READY">
+      </form>
+      {{/if}}
+      {{#if game.ready}}
+      <form action="/game/close/{{game._id}}" method="post">
+      <label for="status2"> Change status to: </label>
+      <input type="submit" class="btn btn-danger" name="" id="status2" value="CLOSED">
+      </form>
+      {{/if}}
+      
+      <form action="/game/remove/{{game._id}}" method="post">
+      <input type="submit" class="btn btn-danger" name="" value="DELETE">
+      </form>
+      {{/if}}
       {{#if game.joining}}
       <button class="btn btn-warning">JOINING</button>
       {{/if}} 
@@ -13,24 +31,7 @@
       {{#if game.closed}}
       <button class="btn btn-danger">CLOSED</button>
       {{/if}}
-      {{#if imHost}}
-      {{#if game.joining}}
-      <form action="/game/ready/{{game._id}}" method="post">
-      <label for="status1"> Change Status: </label>
-      <input type="submit" class="btn btn-warning" name="" id="status1" value="JOINING">
-      </form>
-      {{/if}}
-      {{#if game.ready}}
-      <form action="/game/close/{{game._id}}" method="post">
-      <label for="status2"> Change Status: </label>
-      <input type="submit" class="btn btn-success" name="" id="status2" value="READY">
-      </form>
-      {{/if}}
       
-      <form action="/game/remove/{{game._id}}" method="post">
-      <input type="submit" class="btn btn-danger" name="" value="DELETE">
-      </form>
-      {{/if}}
       </div>
       
       {{#if game.joining}}

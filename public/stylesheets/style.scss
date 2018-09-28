@@ -170,6 +170,8 @@ footer {
   
   .buttons-game {
     display: flex;
+    justify-content: start;
+    flex-direction: column;
     div{
       display: inline-block;
       padding-left: 10px;
