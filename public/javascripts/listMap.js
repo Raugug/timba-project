@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
           lng:game.location.coordinates[1]
         },
         map: map,
-        title: `<img src="${game.photo}">`+'\n'+game.hostId.username+'\n'+ game.level+'\n'+ game.date+' | '+ game.time,
+        title: game.hostId.username+'\n'+ game.level+'\n'+ game.date+' | '+ game.time,
       });
       if (user){
         if (Math.floor(user.level) > game.level){marker.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png');}

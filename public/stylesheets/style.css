@@ -53,6 +53,8 @@ header {
     display: inline-block;
     padding-right: 50px;
     font-weight: 700; }
+  .menu-list li #hosting {
+    color: #eef10b; }
 
 .menu-list a {
   color: #ffffff;
@@ -124,6 +126,9 @@ footer {
       height: 250px;
       margin: 5% 5%;
       border-radius: 5%; }
+    #games-list .game-in-list .btn {
+      width: 90%;
+      margin: 0 auto; }
     #games-list .game-in-list p {
       font-size: 20px; }
 
@@ -219,6 +224,19 @@ footer {
       margin-top: 10px auto;
       background: #ffffff;
       border-radius: 5%; }
+
+.form {
+  width: 80%;
+  background: #2D354C;
+  margin: 10px auto;
+  margin-bottom: 50px;
+  padding: 30px; }
+  .form h1 {
+    display: inline-block; }
+  .form a {
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none; }
 
 a {
   color: #ffffff;

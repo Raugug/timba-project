@@ -61,7 +61,9 @@ header {
     display: inline-block;
     padding-right: 50px;
     font-weight: 700;
-
+  }
+  #hosting{
+    color: #eef10b;
   }
 }
 .menu-list a{
@@ -145,6 +147,10 @@ footer {
       height: 250px;
       margin: 5% 5%;
       border-radius:5%;
+    }
+    .btn {
+      width: 90%;
+      margin: 0 auto;
     }
 
     p {
@@ -276,7 +282,23 @@ footer {
     }
   }
 }
+.form{
+  width: 80%;
+  background: #2D354C;
+  margin: 10px auto;
+  margin-bottom: 50px;
+  padding: 30px;
 
+  h1 {
+    display: inline-block;
+  }
+  a {
+    color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  }
+
+}
 
 
 

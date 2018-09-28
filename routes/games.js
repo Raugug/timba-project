@@ -54,15 +54,16 @@ router.get('/hostlist', ensureLoggedIn(), (req, res, next) => {
 
 //GAME DETAIL
 router.get('/:gameId', ensureLoggedIn(), (req, res, next) => {
+  const user=req.user;
   Game.findById(req.params.gameId).populate('hostId').populate('players')
     .then(game => {
-      Usergame.find({gameId:game._id, userId: req.user._id}).populate('gameId').then(usergame => {
+      Usergame.find({gameId:game._id, userId: req.user._id})
+      .then(usergame => {
         console.log("HERE: USERGAME ALREADY IN GAME", usergame);
-        let imHost= false;
-        if (game.hostId == req.user._id){imHost = true;} 
-        let user = req.user;
+        Game.find({hostId: user._id}).then((imHost)=>{
         res.render('games/show', { usergame, game, user, imHost,
           gameStr: JSON.stringify(game) })
+        })
         })
     }).catch(e => console.log(e))
 })
@@ -105,13 +106,12 @@ router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
 })
 
 //DELETE GAME
-router.get("/remove/:gameId", (req, res) => {
-
+router.post("/remove/:gameId", ensureLoggedIn(), (req, res) => {
   Game.findByIdAndRemove(req.params.gameId, (err, game) => {
     if (err) {
       return next(err);
     }
-    return res.redirect("/");
+    return res.redirect("/game/hostlist");
   });
 });
 

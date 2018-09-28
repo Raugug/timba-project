@@ -1,6 +1,6 @@
-<section id="login-view">
+<section class="form">
 
-  <h2> Log In </h2>
+  <h1> Log In </h1>
 
   {{#if errorMessage}}
   <p class="error-message">
@@ -19,11 +19,11 @@
       <input type="password" name="password" id="password-input" placeholder="e.g., ••••••••••••" class="form-control">
     </div>
 
-    <button> Log In </button>
+    <button class="btn btn-success"> Log In </button>
   </form>
-
+  <br>
   <p>
-    Don't have an account?
+    Don't have an account?<br>
     <a href="/auth/signup">
       Create an account.
     </a>

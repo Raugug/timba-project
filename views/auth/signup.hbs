@@ -1,6 +1,6 @@
-<section id="signup-view">
+<section class="form">
 
-  <h2> Sign Up </h2>
+  <h1> Sign Up </h1>
 
   {{#if errorMessage}}
   <p class="error-message">
@@ -28,13 +28,13 @@
       <label for="photo">Profile Picture</label>
       <input type="file" name="photo" id="photo" class="form-control">
     </div>
-
-    <button> Create New Account </button>
+    
+    <button class="btn btn-success"> Create New Account </button>
   </form>
-
+  <br>
   <p>
-    Already have an account?
-    <a href="/login">
+    Already have an account?<br>
+    <a href="/auth/login">
       Log in.
     </a>
   </p>
