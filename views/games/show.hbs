@@ -4,6 +4,15 @@
     </div>
     <div class="buttons-game">
       <div>
+      {{#if game.joining}}
+      <button class="btn btn-warning">JOINING</button>
+      {{/if}} 
+      {{#if game.ready}}
+      <button class="btn btn-success">READY</button>
+      {{/if}}
+      {{#if game.closed}}
+      <button class="btn btn-danger">CLOSED</button>
+      {{/if}}
       {{#if imHost}}
       {{#if game.joining}}
       <form action="/game/ready/{{game._id}}" method="post">
@@ -16,9 +25,6 @@
       <label for="status2"> Change Status: </label>
       <input type="submit" class="btn btn-success" name="" id="status2" value="READY">
       </form>
-      {{/if}}
-      {{#if game.closed}}
-      <button class="btn btn-danger">CLOSED</button>
       {{/if}}
       
       <form action="/game/remove/{{game._id}}" method="post">
