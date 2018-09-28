@@ -1,9 +1,7 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Review = require('../models/review');
 const router = express.Router();
-const bcryptSalt = 10;
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
 
@@ -11,7 +9,9 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 router.get('/myprofile', ensureLoggedIn(), (req, res, next) => {
   User.findById(req.user._id)
   .then(player => {
-    res.render('user/profile', {player, 
+    let owner= true;
+    res.render('user/profile', {player,
+      owner, 
       playerStr: JSON.stringify(player)
     });
   }).catch(err => next(err))
@@ -22,7 +22,7 @@ router.get('/myprofile/:userId', ensureLoggedIn(), (req, res, next) => {
   const userId = req.params.userId;
   User.findById(userId)
   .then(player => {
-    res.render('user/otherProfile', {
+    res.render('user/profile', {
       player, 
       playerStr: JSON.stringify(player)});
   }).catch(err => next(err))
@@ -78,16 +78,12 @@ router.get('/list', ensureLoggedIn(), (req, res, nest) => {
 // Get my Games List
 router.get('/mylist', ensureLoggedIn(), (req, res, next) =>{
   User.findById(req.user._id)
-  .populate('games')
+  .populate('games').populate('hostId')
   .then(player => {
     console.log(player.games)
     res.render('user/playerGames',{player} )
   }).catch(err => next(err))
 });
-
-//{games:player.games}
-
-
 
 // Get other Profile User
 router.get('/:userId', ensureLoggedIn(), (req, res, next) => {

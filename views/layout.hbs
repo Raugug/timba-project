@@ -18,54 +18,45 @@
 
 </head>
 <body>
-  <header>
-    <section id="bar">
 
-    <button class="btn btn-danger">
-      <a href='/'>HOME</a>
-    </button>
-    {{#if user}}
-    <button class="btn btn-danger">
-      <a href='/player/myprofile'>MY PROFILE</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/player/mylist'>MY GAMES</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/auth/logout'>LOG OUT</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href="/game/list">ALL GAMES</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/player/list'>ALL PLAYERS</a>
-    </button>
-    {{#if user.isHost}}
-    <button class="btn btn-danger">
-      <a href="/game/new">CREATE GAME</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/game/hostlist'>MY GAMES AS HOST</a>
-    </button>
-    {{else}}
-    <form action="/" method="post">
-      <input class="btn btn-warning" type="submit" name="" value="BECOME A HOST">
-    </form>
-    {{/if}}
-    {{else}}
-    <button class="btn btn-danger">
-      <a href='/auth/signup'>SIGN UP</a>
-    </button>
-    <button class="btn btn-danger">
-      <a href='/auth/login'>LOG IN</a>
-    </button>
-    {{/if}}
-    </section>
-  </header>
+  <header>
+        <div class="logo"><a href="/"><img src="https://res.cloudinary.com/dvd0xwpmc/image/upload/v1538083815/img/logo.png" alt="Logo"></a></div>
+        <nav class="menu">
+            <ul class="menu-list">
+                {{#if user}}
+                <li><div>{{user.username}}</div><div> lv: {{user.level}}</div></li>
+                {{/if}}
+                <li><a href="/">Home</a></li>
+                {{#if user}}
+                <li><a href='/player/myprofile'>Profile</a></li>
+                <li><a href='/player/mylist'>Games joined</a></li>
+                
+                <li><a href="/game/list">Games to join</a></li>
+                <li><a href='/player/list'>Players</a></li>
+                {{#if user.isHost}}
+                <li><a href="/game/new">New game</a></li>
+                <li><a href='/game/hostlist'>Hosting</a></li>
+                {{else}}
+                <li>
+                  <form action="/" method="post">
+                <input class="btn btn-warning" type="submit" name="" value="BECOME A HOST">
+                </form>
+                </li>
+                {{/if}}
+                {{else}}
+                <li><a href='/auth/signup'>Sign Up</a></li>
+                <li><a href='/auth/login'>Log In</a></li>
+                {{/if}}
+                {{#if user}}
+                <li><a href='/auth/logout'>Log Out</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </header>
   {{{body}}}
   <footer>
 
-    <h4>Raúl Guía & David Sirit. </h4>
+    <h4><a href="https://www.linkedin.com/in/raulguiagarcia/">Raúl Guía</a>  & <a href="https://www.linkedin.com/in/david-leonardo-sirit-manzo/"> David Sirit</a></h4>
   </footer>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/javascripts/addGraph.js"></script>

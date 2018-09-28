@@ -105,7 +105,7 @@ router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
 })
 
 //DELETE GAME
-/* router.get("/delete/:gameId", (req, res) => {
+router.get("/remove/:gameId", (req, res) => {
 
   Game.findByIdAndRemove(req.params.gameId, (err, game) => {
     if (err) {
@@ -113,7 +113,7 @@ router.post('/delete/:gameId', ensureLoggedIn(), (req, res, next) => {
     }
     return res.redirect("/");
   });
-}); */
+});
 
 
 //////////// HOST /////////////

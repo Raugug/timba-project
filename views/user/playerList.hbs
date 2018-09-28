@@ -1,18 +1,12 @@
-<section class="main-menu">
-  <h1>PLAYERS</h1>
-
-  <div id="usersdiv">
+<section class="playerslist">
     {{#each players}}
     <div id="usersdiv">
-      <h3>{{this.username}}</h3>
-      <button class="btn btn-info btn-s">
-        <a href="/player/myprofile/{{this._id}}">VIEW DETAILS</a>
-      </button>
-      <button class="btn btn-info btn-s">
-        <a href="/review/{{this._id}}">REVIEW</a>
-      </button>
+      <img src="{{{this.photo}}}" alt="">
+      <h2>{{this.username}}</h2>
+      <h2>lv: {{this.level}}</h2>
+      <a href="/player/myprofile/{{this._id}}">VIEW DETAILS</a>
+      <a href="/review/{{this._id}}">REVIEW</a>
     </div>
     {{/each}}
-  </div>
 
 </section>

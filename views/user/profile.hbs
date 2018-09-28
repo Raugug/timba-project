@@ -1,35 +1,35 @@
-<section id="myprofile">
+<section class="profile">
 
-  <section class="profile">
+  <div class="prof-elem1">
     {{#if errorMessage}}
     <p class="error-message">
       {{ errorMessage }}
     </p>
     {{/if}}
-    <div class="user">
 
       <img src="{{{player.photo}}}" alt="">
-      <hr>
+      {{#if owner}}
       <button class="btn btn-warning">
         <a href='/player/edituser'>EDIT</a>
       </button>
+      {{/if}}
       <h2>User: {{{player.username}}}</h2>
       <h2>Email: {{{player.email}}} </h2>
-      <h3>LEVEL: {{{player.level}}}</h3>
+      <h2>LEVEL: {{{player.level}}}</h2>
 
-      <h3>Stats:</h3>
+      <h2>Stats:</h2>
       <div class="user-stats">
         <p>Vision: {{{player.vision}}}</p>
         <p>Self-Control: {{{player.selfControl}}}</p>
         <p>Courage: {{{player.courage}}}</p>
         <p>Sharp: {{{player.sharp}}}</p>
       </div>
+  </div>
+
+  <div class="prof-elem2">
+    <div class="chart">
+      <canvas id="myChart"></canvas>
     </div>
-
-
-  </section>
-  <div class="chart">
-  <canvas id="myChart"></canvas>
   </div>
 </section>
 <script>

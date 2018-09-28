@@ -1,51 +1,50 @@
 <section id="gameDetail">
-  <div class="gameInfo">
+    <div class="img-detail">
     <img src="{{game.photo}}" alt="Game Image">
-    <hr>
-  
-    
-    {{#if game.joining}}
-    <form action="/game/ready/{{game._id}}" method="post">
-    <label for="status1"> Change Status: </label>
-    <input type="submit" class="btn btn-warning" name="" id="status1" value="JOINING">
-    </form>
-    {{/if}}
-    {{#if game.ready}}
-    <form action="/game/close/{{game._id}}" method="post">
-    <label for="status2"> Change Status: </label>
-    <input type="submit" class="btn btn-success" name="" id="status2" value="READY">
-    </form>
-    {{/if}}
-    {{#if game.closed}}
-    <button class="btn btn-danger">CLOSED</button>
-    {{/if}}
-    {{#if hosting}}
-    <button class="btn btn-danger">
-      <a href='/game/delete/{{this._id}}'>DELETE</a>
-    </button>
-    {{/if}}
-    
+    </div>
+    <div class="buttons-game">
+      <div>
+      {{#if game.joining}}
+      <form action="/game/ready/{{game._id}}" method="post">
+      <label for="status1"> Change Status: </label>
+      <input type="submit" class="btn btn-warning" name="" id="status1" value="JOINING">
+      </form>
+      {{/if}}
+      {{#if game.ready}}
+      <form action="/game/close/{{game._id}}" method="post">
+      <label for="status2"> Change Status: </label>
+      <input type="submit" class="btn btn-success" name="" id="status2" value="READY">
+      </form>
+      {{/if}}
+      {{#if game.closed}}
+      <button class="btn btn-danger">CLOSED</button>
+      {{/if}}
+      </div>
+      
+      <div>
 
-    {{#unless usergame}}
-    <form action="/game/add/{{game._id}}" method="post">
-    <input type="submit" class="btn btn-warning" name="" value="JOIN GAME">
-    </form>
-    {{/unless}}
-    {{#if usergame}}
-    <form action="/game/delete/{{game._id}}" method="post">
-    <input type="submit" class="btn btn-danger" name="" value="LEAVE GAME">
-    </form>
-    {{/if}}
-    
+      {{#unless usergame}}
+      <form action="/game/add/{{game._id}}" method="post">
+      <input type="submit" class="btn btn-warning" name="" value="JOIN GAME">
+      </form>
+      {{/unless}}
+      {{#if usergame}}
+      <form action="/game/delete/{{game._id}}" method="post">
+      <input type="submit" class="btn btn-danger" name="" value="LEAVE GAME">
+      </form>
+      {{/if}}
+      </div>
+    </div>
+
+    <div>
     <h3>Hosted By: {{game.hostId.username}}</h3>
     <h4>{{game.description}}</h4>
-    <p><span>{{game.date}}</span> || <span>{{game.time}}</span></p>
-    <p>Max Players: {{game.playersNum}}</p>
-    <p>Min Level: {{game.level}}</p>
-    <p>Buy-In: {{game.buyIn}}</p>
-    <p>Blinds: {{game.blinds}}</p>
-    
-  </div>
+    <h4><span>{{game.date}}</span> || <span>{{game.time}}</span></h4>
+    <h4>Max Players: {{game.playersNum}}</h4>
+    <h4>Min Level: {{game.level}}</h4>
+    <h4>Buy-In: {{game.buyIn}}</h4>
+    <h4>Blinds: {{game.blinds}}</h4>
+    </div>
 
 
   <div class="gamePlayers">
@@ -54,17 +53,15 @@
     {{#each this.players}}
     <div class="player">
       <h4 class="player-name">{{this.username}}</h4>
-      <h4 class="comment-content">LV: {{this.level}}</h4>
+      <h4 class="level">LV: {{this.level}}</h4>
+      <a href="/player/myprofile/{{this._id}}">VIEW DETAILS</a>
+      {{#if game.closed}}
+      <a href="/review/{{this._id}}">REVIEW</a>
+      {{/if}}
     </div>
     {{/each}}
     {{/each}}
   </div>
-  <div class="graph-game">
-
-  </div>
-  <button class="btn btn-danger">
-    <a href="/game/list">BACK TO LIST</a>
-  </button>
 
   <div id="map"></div>
 </section>

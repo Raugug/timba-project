@@ -5,7 +5,7 @@
   {{#each player.games}}
   <div class="game-in-list">
     <a href="/game/{{this._id}}"><img src="{{this.photo}}" alt="Game Image"></a>
-    <h3>Hosted by: {{this.hostId.username}}</h3>
+    {{!-- <h3>Hosted by: {{this.hostId.username}}</h3> --}}
 
     <p>{{this.date}} | {{this.time}}</p>
     <p>Level: {{this.level}}</p>

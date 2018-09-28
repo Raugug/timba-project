@@ -1,4 +1,4 @@
-<section>
+<section class="secform">
 
   <h2>Edit Profile: {{{player.username}}}</h2>
   {{#if errorMessage}}
@@ -22,13 +22,6 @@
       <label for="">New email: </label>
       <input type="email" name="email" value="{{player.email}}" class="form-control">
 </div>
-<div class="form-group">
-
-      <p>Current password: ***** </p>
-      <label for="">New password: </label>
-      <input type="text" name="password" value="{{player.password}}" class="form-control"> 
-</div>
-
 
       <button type="submit">EDIT {{player.username}}</button>
     </form>

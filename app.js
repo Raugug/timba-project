@@ -86,11 +86,10 @@ app.use(flash());
 
 // default value for title local
 app.use((req, res, next) => {
-  app.locals.title = "TimbApp - Your app to find poker partners";
+  app.locals.title = "TimbApp - Your app to find poker games and partners";
   app.locals.user = req.user;
   next();
 })
-//app.locals.title = "TimbApp - Your app to find poker partners";
 
 const index = require("./routes/index");
 const authRoutes = require("./routes/auth");
