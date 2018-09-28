@@ -27,11 +27,11 @@ header {
   justify-content: space-between;
   align-items: center; }
 
-.logo {
+.thelogo {
   height: 100px;
   width: 100px; }
 
-.logo img {
+.thelogo img {
   max-width: 100%;
   height: auto; }
 

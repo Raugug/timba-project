@@ -22,9 +22,9 @@ router.get('/:userId', ensureLoggedIn(), (req, res, next) => {
 router.post('/create/:userId', ensureLoggedIn(), (req, res, next) =>{
   const owner=req.params.userId;
   const vision=req.body.vision;  
-  const selfc=req.body.vision;  
-  const courage=req.body.vision;  
-  const sharp=req.body.vision;
+  const selfc=req.body.selfc;  
+  const courage=req.body.courage;  
+  const sharp=req.body.sharp;
   const authorId = req.user._id;
   Review.create({ownerId: owner, authorId, vision, selfc, courage, sharp})
   .then(() => {
